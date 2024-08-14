@@ -1,9 +1,10 @@
 // Options
 import css from "./Options.module.css"
-import { useState, useEffect } from "react";
-import Notification from "../Notification/Notification"
-export default function Options() {
-    const [values, setValues] = useState({
+import { useState, onFeedback } from "react";
+export default function Options(
+    // { values, setValues }
+) {
+    let [values, setValues] = useState({
         good: 0,
         neutral: 0,
         bad: 0
@@ -32,19 +33,28 @@ export default function Options() {
             total: values.good + values.neutral + values.bad,
         });
     };
+
     const resetClick = () => { setValues(0) };
-    // second example
-    const handleClick = (evt) => {
-        console.log(evt);
-    };
+
+
+    // const onFeedback = (option) => {
+    //     setValues({
+    //         ...values,
+    //         option: values[option] + 1
+    //     });
+    // }
 
     return (
         <>
-            {/* second example */}
-            <button onClick={handleClick}>First button</button>
-            <button onClick={evt => console.log(evt)}>Second button</button>
+            {/*            
+            <div>
+                <button onClick={onFeedback} className={css.button}>Good </button>
+                <button onClick={onFeedback} className={css.button}>Neutral </button>
+                <button onClick={onFeedback} className={css.button}>Bad </button>
+                <button onClick={resetClick} className={css.button}>Reset</button>
+                <button onClick={onFeedback} ></button>
 
-            <Notification />
+            </div> */}
 
             <div>
                 <button onClick={updateX} className={css.button}>Good </button>
